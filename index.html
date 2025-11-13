@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - BIG Logistics India Pvt. Ltd.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .contact-hero {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9), rgba(59, 130, 246, 0.8)), 
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+        }
+        
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        
+        .success-message {
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .floating-elements::before,
+        .floating-elements::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-elements::before {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-elements::after {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+
+
+    <!-- Admin Portal Button -->
+    <div class="absolute top-4 right-4 z-50">
+        <a href="file:///C:/Users/admin/Desktop/Index.web/admin_portal.html" target="_blank" rel="noopener noreferrer" class="inline-block bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-semibold transition duration-300 shadow-lg">
+            🔐 Admin Portal
+        </a>
+    </div>
+
+    
+    <!-- Hero Section -->
+    <section class="contact-hero relative min-h-screen flex items-center justify-center">
+        <div class="floating-elements"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center text-white mb-16">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Ready to streamline your logistics? Contact BIG Logistics India for comprehensive exhibition, freight and transportation solutions.</p>
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+                    <a href="tel:+91-11-42437383" class="flex items-center bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-lg hover:bg-opacity-30 transition duration-300">
+                        <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <span class="font-semibold">+91-11-42437383</span>
+                    </a>
+                    <a href="mailto:info@brightindiagroup.com" class="flex items-center bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-lg hover:bg-opacity-30 transition duration-300">
+                        <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <span class="font-semibold">info@brightindiagroup.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-2xl shadow-xl p-8">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Send Us a Message</h2>
+                        <p class="text-gray-600">Fill out the form below and we'll get back to you within 24 hours.</p>
+                    </div>
+                    
+                    <!-- Success Message -->
+                    <div id="success-message" class="success-message bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            <span class="font-semibold">Message sent successfully!</span>
+                        </div>
+                        <p class="mt-1">Thank you for contacting us. We'll respond within 24 hours.</p>
+                    </div>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" id="name" name="name" required 
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                       placeholder="Enter your full name">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-sm font-semibold text-gray-700 mb-2">Company Name*</label>
+                                <input type="text" id="company" name="company" required
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                       placeholder="Enter company name">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                                <div class="flex">
+                                    <select id="country-code" name="countryCode" required 
+                                            class="form-input px-0 py-3 border border-gray-300 rounded-l-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white w-24">
+                                        <option value="+91">🇮🇳 +91</option>
+                                        <option value="+1">🇺🇸 +1</option>
+                                        <option value="+44">🇬🇧 +44</option>
+                                        <option value="+86">🇨🇳 +86</option>
+                                        <option value="+81">🇯🇵 +81</option>
+                                        <option value="+49">🇩🇪 +49</option>
+                                        <option value="+33">🇫🇷 +33</option>
+                                        <option value="+39">🇮🇹 +39</option>
+                                        <option value="+34">🇪🇸 +34</option>
+                                        <option value="+7">🇷🇺 +7</option>
+                                        <option value="+55">🇧🇷 +55</option>
+                                        <option value="+61">🇦🇺 +61</option>
+                                        <option value="+82">🇰🇷 +82</option>
+                                        <option value="+65">🇸🇬 +65</option>
+                                        <option value="+60">🇲🇾 +60</option>
+                                        <option value="+66">🇹🇭 +66</option>
+                                        <option value="+84">🇻🇳 +84</option>
+                                        <option value="+62">🇮🇩 +62</option>
+                                        <option value="+63">🇵🇭 +63</option>
+                                        <option value="+971">🇦🇪 +971</option>
+                                        <option value="+966">🇸🇦 +966</option>
+                                        <option value="+27">🇿🇦 +27</option>
+                                    </select>
+                                    <input type="tel" id="phone" name="phone" required 
+                                           class="form-input flex-1 px-1 py-3 border border-l-0 border-gray-300 rounded-r-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                           placeholder="Enter phone number">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                       placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-semibold text-gray-700 mb-2">Select Service *</label>
+                            <select id="service" name="service" required 
+                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white">
+                                <option value="">Choose a service...</option>
+                                <option value="fair-&-events">Fair & Events</option>
+                                <option value="onsite-handling">Onsite Handling</option>
+                                <option value="warehousing">Warehousing</option>
+                                <option value="custom-clearance">Custom Clearance</option>
+                                <option value="sea-freight">Sea Freight</option>
+                                <option value="air-freight">Air Freight</option>
+                                <option value="road-transportation">Road Transportation</option>
+                                <option value="projects">Project Logistics</option>
+                                <option value="consultation">General Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="5" required 
+                                      class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-vertical"
+                                      placeholder="Tell us about your logistics requirements..."></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            <span class="flex items-center justify-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                </svg>
+                                Send Message
+                            </span>
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <!-- Direct Contact -->
+                    <div class="contact-card bg-white rounded-2xl shadow-xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Direct Contact</h3>
+                        <div class="space-y-4">
+                            <a href="tel:+91-11-42437383" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300">
+                                <div class="bg-blue-600 p-3 rounded-full mr-4">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Phone</p>
+                                    <p class="text-blue-600 font-semibold">+91-11-42437383</p>
+                                </div>
+                            </a>
+                            
+                            <a href="mailto:info@brightindiagroup.com" class="flex items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition duration-300">
+                                <div class="bg-green-600 p-3 rounded-full mr-4">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Email</p>
+                                    <p class="text-green-600 font-semibold">info@brightindiagroup.com</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Business Hours -->
+                    <div class="contact-card bg-white rounded-2xl shadow-xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Business Hours</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                <span class="font-semibold text-gray-700">Monday - Friday</span>
+                                <span class="text-gray-600">10:00 AM - 06:00 PM</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                <span class="font-semibold text-gray-700">Saturday</span>
+                                <span class="text-gray-600">10:00 AM - 05:00 PM</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="font-semibold text-gray-700">Sunday</span>
+                                <span class="text-red-600 font-semibold">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Why Choose Us -->
+                    <div class="contact-card bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-6">Why Choose BIG Logistics?</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-blue-200" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                                <span>24/7 Customer Support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-blue-200" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                                <span>Global Network Coverage</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-blue-200" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                                <span>Competitive Pricing</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-blue-200" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                                <span>Real-time Tracking</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-blue-200" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                                <span>Expert Consultation</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3 4h18v2H3V4zm0 7h12v2H3v-2zm0 7h18v2H3v-2zm16-5l4-4v3h4v2h-4v3l-4-4z"/>
+                        </svg>
+                        <div>
+                            <h3 class="text-xl font-bold">BIG Logistics</h3>
+                            <p class="text-sm text-gray-300">India Pvt. Ltd.</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">Your trusted logistics partner for comprehensive freight and transportation solutions worldwide.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="file:///C:/Users/admin/Desktop/Index.web/exp1.html" class="text-gray-300 hover:text-blue-400 transition duration-300">Home</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-blue-400 transition duration-300">Services</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-blue-400 transition duration-300">About Us</a></li>
+                        <li><a href="file:///C:/Users/admin/Desktop/Index.web/contact.html" class="text-gray-300 hover:text-blue-400 transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Our Services</h4>
+                    <ul class="space-y-2">
+                        <li><span class="text-gray-300">Sea Freight</span></li>
+                        <li><span class="text-gray-300">Air Freight</span></li>
+                        <li><span class="text-gray-300">Road Transportation</span></li>
+                        <li><span class="text-gray-300">Custom Clearance</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2">
+                        <p class="text-gray-300 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            +91-11-42437383
+                        </p>
+                        <p class="text-gray-300 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            info@brightindiagroup.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2024 BIG Logistics India Pvt. Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Admin Portal Functionality
+        const adminBtn = document.getElementById('admin-btn');
+        const adminModal = document.getElementById('admin-modal');
+        const adminLogin = document.getElementById('admin-login');
+        const adminDashboard = document.getElementById('admin-dashboard');
+        const adminPassword = document.getElementById('admin-password');
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+        const loginError = document.getElementById('login-error');
+        const closeAdmin = document.getElementById('close-admin');
+        const closeDashboard = document.getElementById('close-dashboard');
+        const refreshData = document.getElementById('refresh-data');
+        const exportData = document.getElementById('export-data');
+        
+        // Admin credentials (in real implementation, this would be server-side)
+        const ADMIN_PASSWORD = 'admin123';
+        
+        // Show admin modal
+        adminBtn.addEventListener('click', () => {
+            adminModal.classList.remove('hidden');
+            adminPassword.focus();
+        });
+        
+        // Close admin modal
+        closeAdmin.addEventListener('click', () => {
+            adminModal.classList.add('hidden');
+            resetAdminModal();
+        });
+        
+        closeDashboard.addEventListener('click', () => {
+            adminModal.classList.add('hidden');
+            resetAdminModal();
+        });
+        
+        // Close modal on outside click
+        adminModal.addEventListener('click', (e) => {
+            if (e.target === adminModal) {
+                adminModal.classList.add('hidden');
+                resetAdminModal();
+            }
+        });
+        
+        // Admin login
+        adminLoginBtn.addEventListener('click', () => {
+            const password = adminPassword.value;
+            if (password === ADMIN_PASSWORD) {
+                adminLogin.classList.add('hidden');
+                adminDashboard.classList.remove('hidden');
+                loadAdminData();
+                loginError.classList.add('hidden');
+            } else {
+                loginError.classList.remove('hidden');
+                adminPassword.value = '';
+                adminPassword.focus();
+            }
+        });
+        
+        // Enter key for login
+        adminPassword.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                adminLoginBtn.click();
+            }
+        });
+        
+        // Reset admin modal
+        function resetAdminModal() {
+            adminLogin.classList.remove('hidden');
+            adminDashboard.classList.add('hidden');
+            adminPassword.value = '';
+            loginError.classList.add('hidden');
+        }
+        
+        // Load admin data
+        function loadAdminData() {
+            const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+            
+            // Update statistics
+            document.getElementById('total-count').textContent = submissions.length;
+            
+            // Today's submissions
+            const today = new Date().toDateString();
+            const todaySubmissions = submissions.filter(sub => 
+                new Date(sub.timestamp).toDateString() === today
+            );
+            document.getElementById('today-count').textContent = todaySubmissions.length;
+            
+            // Most popular service
+            const serviceCounts = {};
+            submissions.forEach(sub => {
+                if (sub.service) {
+                    serviceCounts[sub.service] = (serviceCounts[sub.service] || 0) + 1;
+                }
+            });
+            
+            const popularService = Object.keys(serviceCounts).reduce((a, b) => 
+                serviceCounts[a] > serviceCounts[b] ? a : b, '-'
+            );
+            
+            const serviceNames = {
+                'sea-freight': 'Sea Freight',
+                'air-freight': 'Air Freight',
+                'road-transportation': 'Road Transportation',
+                'custom-clearance': 'Custom Clearance',
+                'exhibition': 'Exhibition Logistics',
+                'onsite-management': 'Onsite Management',
+                'warehousing': 'Warehousing',
+                'projects': 'Project Logistics',
+                'consultation': 'General Consultation',
+                'other': 'Other'
+            };
+            
+            document.getElementById('popular-service').textContent = 
+                serviceNames[popularService] || popularService;
+            
+            // Display submissions list
+            displaySubmissions(submissions);
+        }
+        
+        // Display submissions
+        function displaySubmissions(submissions) {
+            const submissionsList = document.getElementById('submissions-list');
+            
+            if (submissions.length === 0) {
+                submissionsList.innerHTML = `
+                    <div class="text-center text-gray-500 py-8">
+                        No submissions yet. Submit the contact form to see data here.
+                    </div>
+                `;
+                return;
+            }
+            
+            // Sort by timestamp (newest first)
+            const sortedSubmissions = submissions.sort((a, b) => 
+                new Date(b.timestamp) - new Date(a.timestamp)
+            );
+            
+            submissionsList.innerHTML = sortedSubmissions.map((submission, index) => `
+                <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-gray-800">${submission.name}</h4>
+                            <p class="text-sm text-gray-600">${submission.company || 'No company'}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-500">
+                                ${new Date(submission.timestamp).toLocaleDateString()} 
+                                ${new Date(submission.timestamp).toLocaleTimeString()}
+                            </p>
+                            <span class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full mt-1">
+                                ${submission.service ? submission.service.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'No service'}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                        <div>
+                            <span class="font-medium text-gray-700">Phone:</span>
+                            <span class="text-gray-600">${submission.phone}</span>
+                        </div>
+                        <div>
+                            <span class="font-medium text-gray-700">Email:</span>
+                            <span class="text-gray-600">${submission.email}</span>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="font-medium text-gray-700">Message:</span>
+                        <p class="text-gray-600 text-sm mt-1">${submission.message}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Refresh data
+        refreshData.addEventListener('click', () => {
+            loadAdminData();
+        });
+        
+        // Export to CSV
+        exportData.addEventListener('click', () => {
+            const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+            
+            if (submissions.length === 0) {
+                alert('No data to export');
+                return;
+            }
+            
+            // Create CSV content
+            const headers = ['Name', 'Company', 'Phone', 'Email', 'Service', 'Message', 'Timestamp'];
+            const csvContent = [
+                headers.join(','),
+                ...submissions.map(sub => [
+                    `"${sub.name}"`,
+                    `"${sub.company || ''}"`,
+                    `"${sub.phone}"`,
+                    `"${sub.email}"`,
+                    `"${sub.service || ''}"`,
+                    `"${sub.message.replace(/"/g, '""')}"`,
+                    `"${sub.timestamp}"`
+                ].join(','))
+            ].join('\n');
+            
+            // Download CSV
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `contact-submissions-${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        });
+        
+        // Contact form functionality
+        const contactForm = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const countryCode = formData.get('countryCode');
+            const phoneNumber = formData.get('phone');
+            const data = {
+                name: formData.get('name'),
+                company: formData.get('company'),
+                phone: countryCode + ' ' + phoneNumber,
+                email: formData.get('email'),
+                service: formData.get('service'),
+                message: formData.get('message'),
+                timestamp: new Date().toISOString()
+            };
+            
+            // Simulate form submission (in real implementation, this would send to your backend)
+            console.log('Form submitted with data:', data);
+            
+            // Store in localStorage as a demo (in real implementation, this would go to your database)
+            const existingData = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+            existingData.push(data);
+            localStorage.setItem('contactSubmissions', JSON.stringify(existingData));
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            contactForm.reset();
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        });
+        
+        // Phone number formatting - only allow numbers
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function(e) {
+            // Only allow numbers, spaces, and dashes
+            let value = e.target.value.replace(/[^\d\s-]/g, '');
+            e.target.value = value;
+        });
+        
+        // Form validation enhancement
+        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.classList.add('border-red-500');
+                    this.classList.remove('border-gray-300');
+                } else {
+                    this.classList.remove('border-red-500');
+                    this.classList.add('border-gray-300');
+                }
+            });
+            
+            input.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('border-red-500');
+                    this.classList.add('border-gray-300');
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e67408b00fa701',t:'MTc2MDQzODM3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
