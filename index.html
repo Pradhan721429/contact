@@ -11,7 +11,7 @@
         }
         
         .contact-hero {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(59, 130, 246, 0.8)), 
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(246, 165, 59, 0.8)), 
                         url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
@@ -89,21 +89,50 @@
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-40px); }
         }
+         .nav-link:hover,
+        .mobile-nav-link:hover {
+            background: linear-gradient(135deg,#886627e1 0%,#f5e188d5  100%);
+            color: white;
+        }
     </style>
 </head>
 <body class="font-sans bg-gray-50">
     <!--logo-->
-    <div class="absolute top-4 left-2 z-50">
-         <a href="file:///C:/Users/admin/Desktop/Index.web/admin_portal.html" target="_blank" rel="noopener noreferrer">
-           <img src="logo_wt.png" style="width: 120px; height: 100px;" alt="logo";>
-        </a>
-    </div>   
-     <!-- Admin Portal Button -->
-    <div class="absolute top-4 right-4 z-50">
-        <a href="file:///C:/Users/admin/Desktop/Index.web/admin_portal.html" target="_blank" rel="noopener noreferrer" class="inline-block bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-semibold transition duration-300 shadow-lg">
-            🔐 Admin Portal
-        </a>
+    <!-- NAVBAR -->
+<nav class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+    <div class="flex items-center gap-3">
+      <a href="https://pradhan721429.github.io/Bright-India-Group/"><img src="logo.png" class="h-9" alt="logo" /></a>
+      <div>
+        <h1 class="font-bold text-sm md:text-base">BIG Logistics</h1>
+        <p class="text-[10px] md:text-xs text-gray-500">India Pvt. Ltd.</p>
+      </div>
     </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex gap-6 font-semibold">
+      <a href="https://pradhan721429.github.io/Bright-India-Group/" class="nav-link px-4 py-2 rounded-lg">Home</a>
+      <a href="https://pradhan721429.github.io/Bright-India-Group/" class="nav-link px-4 py-2 rounded-lg">Services</a>
+      <a href="https://pradhan721429.github.io/Bright-India-Group/location.html" class="nav-link px-4 py-2 rounded-lg">Location</a>
+      <a href="https://pradhan721429.github.io/Bright-India-Group/Gallery.html" class="nav-link px-4 py-2 rounded-lg">Gallery</a>
+    </div>
+
+    <!-- Mobile Button -->
+    <button id="menuBtn" class="md:hidden">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden border-t">
+    <a class="block px-6 py-4 nav-link rounded-lg" href="https://pradhan721429.github.io/Bright-India-Group/">Home</a>
+    <a class="block px-6 py-4 nav-link rounded-lg" href="https://pradhan721429.github.io/Bright-India-Group/">Services</a>
+    <a class="block px-6 py-4 nav-link rounded-lg" href="https://pradhan721429.github.io/Bright-India-Group/location.html">Location</a>
+    <a class="block px-6 py-4 nav-link rounded-lg" href="https://pradhan721429.github.io/Bright-India-Group/Gallery.html">Gallery</a>
+  </div>
+</nav>
 
     
     <!-- Hero Section -->
@@ -386,7 +415,18 @@
     </footer>
 
     <script>
-      
+       const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('svg');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
+            });
+        });
             // Most popular service
             const serviceCounts = {};
             submissions.forEach(sub => {
@@ -472,53 +512,8 @@
             `).join('');
         }
         
-        // Refresh data
-        refreshData.addEventListener('click', () => {
-            loadAdminData();
-        });
         
-        // Export to CSV
-        exportData.addEventListener('click', () => {
-            const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
             
-            if (submissions.length === 0) {
-                alert('No data to export');
-                return;
-            }
-            
-            // Create CSV content
-            const headers = ['Name', 'Company', 'Phone', 'Email', 'Service', 'Message', 'Timestamp'];
-            const csvContent = [
-                headers.join(','),
-                ...submissions.map(sub => [
-                    `"${sub.name}"`,
-                    `"${sub.company || ''}"`,
-                    `"${sub.phone}"`,
-                    `"${sub.email}"`,
-                    `"${sub.service || ''}"`,
-                    `"${sub.message.replace(/"/g, '""')}"`,
-                    `"${sub.timestamp}"`
-                ].join(','))
-            ].join('\n');
-            
-            // Download CSV
-            const blob = new Blob([csvContent], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `contact-submissions-${new Date().toISOString().split('T')[0]}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        });
-        
-        // Contact form functionality
-        const contactForm = document.getElementById('contact-form');
-        const successMessage = document.getElementById('success-message');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
             
             // Get form data
             const formData = new FormData(contactForm);
@@ -586,4 +581,5 @@
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e67408b00fa701',t:'MTc2MDQzODM3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
