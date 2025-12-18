@@ -417,172 +417,34 @@
     </footer>
 
     <script>
-       const menuBtn = document.getElementById('menuBtn');
+       // MOBILE MENU FIX
+  const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        // Close mobile menu when clicking a link
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                const icon = mobileMenuBtn.querySelector('svg');
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
-            });
-        });
-            // Most popular service
-            const serviceCounts = {};
-            submissions.forEach(sub => {
-                if (sub.service) {
-                    serviceCounts[sub.service] = (serviceCounts[sub.service] || 0) + 1;
-                }
-            });
-            
-            const popularService = Object.keys(serviceCounts).reduce((a, b) => 
-                serviceCounts[a] > serviceCounts[b] ? a : b, '-'
-            );
-            
-            const serviceNames = {
-                'sea-freight': 'Sea Freight',
-                'air-freight': 'Air Freight',
-                'road-transportation': 'Road Transportation',
-                'custom-clearance': 'Custom Clearance',
-                'exhibition': 'Exhibition Logistics',
-                'onsite-management': 'Onsite Management',
-                'warehousing': 'Warehousing',
-                'projects': 'Project Logistics',
-                'consultation': 'General Consultation',
-                'other': 'Other'
-            };
-            
-            document.getElementById('popular-service').textContent = 
-                serviceNames[popularService] || popularService;
-            
-            // Display submissions list
-            displaySubmissions(submissions);
-        }
-        
-        // Display submissions
-        function displaySubmissions(submissions) {
-            const submissionsList = document.getElementById('submissions-list');
-            
-            if (submissions.length === 0) {
-                submissionsList.innerHTML = `
-                    <div class="text-center text-gray-500 py-8">
-                        No submissions yet. Submit the contact form to see data here.
-                    </div>
-                `;
-                return;
-            }
-            
-            // Sort by timestamp (newest first)
-            const sortedSubmissions = submissions.sort((a, b) => 
-                new Date(b.timestamp) - new Date(a.timestamp)
-            );
-            
-            submissionsList.innerHTML = sortedSubmissions.map((submission, index) => `
-                <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-gray-800">${submission.name}</h4>
-                            <p class="text-sm text-gray-600">${submission.company || 'No company'}</p>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-xs text-gray-500">
-                                ${new Date(submission.timestamp).toLocaleDateString()} 
-                                ${new Date(submission.timestamp).toLocaleTimeString()}
-                            </p>
-                            <span class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full mt-1">
-                                ${submission.service ? submission.service.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'No service'}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-                        <div>
-                            <span class="font-medium text-gray-700">Phone:</span>
-                            <span class="text-gray-600">${submission.phone}</span>
-                        </div>
-                        <div>
-                            <span class="font-medium text-gray-700">Email:</span>
-                            <span class="text-gray-600">${submission.email}</span>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <span class="font-medium text-gray-700">Message:</span>
-                        <p class="text-gray-600 text-sm mt-1">${submission.message}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        
-            
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const countryCode = formData.get('countryCode');
-            const phoneNumber = formData.get('phone');
-            const data = {
-                name: formData.get('name'),
-                company: formData.get('company'),
-                phone: countryCode + ' ' + phoneNumber,
-                email: formData.get('email'),
-                service: formData.get('service'),
-                message: formData.get('message'),
-                timestamp: new Date().toISOString()
-            };
-            
-            // Simulate form submission (in real implementation, this would send to your backend)
-            console.log('Form submitted with data:', data);
-            
-            // Store in localStorage as a demo (in real implementation, this would go to your database)
-            const existingData = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
-            existingData.push(data);
-            localStorage.setItem('contactSubmissions', JSON.stringify(existingData));
-            
-            // Show success message
-            successMessage.style.display = 'block';
-            contactForm.reset();
-            
-            // Scroll to success message
-            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
-        });
-        
-        // Phone number formatting - only allow numbers
-        const phoneInput = document.getElementById('phone');
-        phoneInput.addEventListener('input', function(e) {
-            // Only allow numbers, spaces, and dashes
-            let value = e.target.value.replace(/[^\d\s-]/g, '');
-            e.target.value = value;
-        });
-        
-        // Form validation enhancement
-        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                if (!this.value.trim()) {
-                    this.classList.add('border-red-500');
-                    this.classList.remove('border-gray-300');
-                } else {
-                    this.classList.remove('border-red-500');
-                    this.classList.add('border-gray-300');
-                }
-            });
-            
-            input.addEventListener('input', function() {
-                if (this.value.trim()) {
-                    this.classList.remove('border-red-500');
-                    this.classList.add('border-gray-300');
-                }
-            });
-        });
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // CLOSE MENU ON LINK CLICK
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  });
+
+  // SIMPLE FORM SUBMIT (NO BROKEN LOCALSTORAGE CODE)
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('success-message');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    success.style.display = 'block';
+    form.reset();
+    setTimeout(() => success.style.display = 'none', 4000);
+  });
+
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e67408b00fa701',t:'MTc2MDQzODM3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
