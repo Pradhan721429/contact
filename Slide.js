@@ -1,7 +1,8 @@
-    (function() {
+(function() {
         function initAutoSlideshow() {
             const slidesContainer = document.getElementById('ascSlidesContainer');
             const dotsContainer = document.getElementById('ascDotsContainer');
+            const track = document.getElementById('ascSlideTrack');
             
             if (!slidesContainer || !dotsContainer) {
                 setTimeout(initAutoSlideshow, 100);
@@ -11,54 +12,51 @@
             // =============================================
             // 📷 ADD YOUR IMAGES HERE 📷
             // =============================================
-            // Replace the paths below with your own image files
-            // You can use:
-            // - Relative paths: "images/photo1.jpg", "img/slide2.png"
-            // - Absolute paths: "/assets/myimage.webp"
-            // - Or keep online URLs
-            
             const slidesData = [
                 {
-                    bgImage: 'E-mail (1)-1.png',  // 👈 CHANGE THIS to your image path
-                    caption: "🏔️ Your Caption Here"
+                    bgImage: "images/your-image-1.jpg",  // 👈 CHANGE THIS
+                    caption: "🏔️ Beautiful Mountain"
                 },
                 {
-                    bgImage: "images/your-image-2.jpg",  // 👈 CHANGE THIS to your image path
-                    caption: "🌊 Another Caption"
+                    bgImage: "images/your-image-2.jpg",  // 👈 CHANGE THIS
+                    caption: "🌊 Ocean View"
                 },
                 {
-                    bgImage: "images/your-image-3.jpg",  // 👈 CHANGE THIS to your image path
-                    caption: "🎨 Third Slide"
+                    bgImage: "images/your-image-3.jpg",  // 👈 CHANGE THIS
+                    caption: "🎨 Art & Nature"
                 },
                 {
-                    bgImage: "images/your-image-4.jpg",  // 👈 ADD MORE as needed
-                    caption: "✨ Fourth Slide"
+                    bgImage: "images/your-image-4.jpg",  // 👈 CHANGE THIS
+                    caption: "✨ Magical Sunset"
                 },
                 {
-                    bgImage: "images/your-image-5.jpg",  // 👈 ADD MORE as needed
-                    caption: "🌟 Fifth Slide"
+                    bgImage: "images/your-image-5.jpg",  // 👈 CHANGE THIS
+                    caption: "🌟 Starry Night"
                 }
-                // 👆 You can add more slides here (copy the format, don't forget commas)
             ];
 
             // =============================================
-            // ⚙️ SETTINGS YOU CAN ADJUST ⚙️
+            // ⚙️ SETTINGS
             // =============================================
-            const AUTO_DELAY_MS = 3200;  // Change this to control speed (3000 = 3 seconds)
+            const AUTO_DELAY_MS = 3200;  // Change speed (3000 = 3 seconds)
+            const SWIPE_THRESHOLD = 50;   // Minimum swipe distance in pixels
             // =============================================
 
             let currentIndex = 0;
             let autoInterval = null;
+            let touchStartX = 0;
+            let touchEndX = 0;
+            let isSwiping = false;
 
             function buildSlides() {
                 slidesContainer.innerHTML = '';
                 dotsContainer.innerHTML = '';
 
-                // Filter out any slides with empty or invalid image paths
                 const validSlides = slidesData.filter(slide => slide.bgImage && slide.bgImage.trim() !== '');
                 
                 if (validSlides.length === 0) {
                     console.error('No valid images found! Please add image paths to slidesData');
+                    slidesContainer.innerHTML = '<div style="padding: 100px 20px; text-align: center; color: white;">No images found. Please add your images to slidesData.</div>';
                     return;
                 }
 
@@ -86,10 +84,7 @@
                     dot.addEventListener('click', (e) => {
                         e.stopPropagation();
                         goToSlide(idx);
-                        if (autoInterval) {
-                            clearInterval(autoInterval);
-                            startAutoTimer();
-                        }
+                        resetAutoTimer();
                     });
                     dotsContainer.appendChild(dot);
                 });
@@ -122,6 +117,10 @@
                 goToSlide(currentIndex + 1);
             }
 
+            function prevSlide() {
+                goToSlide(currentIndex - 1);
+            }
+
             function startAutoTimer() {
                 if (autoInterval) clearInterval(autoInterval);
                 autoInterval = setInterval(() => {
@@ -129,7 +128,76 @@
                 }, AUTO_DELAY_MS);
             }
 
-            // Preload images for smoother experience
+            function resetAutoTimer() {
+                if (autoInterval) {
+                    clearInterval(autoInterval);
+                    startAutoTimer();
+                }
+            }
+
+            // Touch/swipe handlers for mobile
+            function handleTouchStart(e) {
+                touchStartX = e.touches[0].clientX;
+                isSwiping = true;
+                // Pause auto timer temporarily during swipe for better UX
+                if (autoInterval) {
+                    clearInterval(autoInterval);
+                }
+            }
+
+            function handleTouchMove(e) {
+                if (!isSwiping) return;
+                touchEndX = e.touches[0].clientX;
+                const diff = touchEndX - touchStartX;
+                // Optional: Add visual feedback during swipe (slightly drag)
+                const totalSlides = document.querySelectorAll('.asc-slide').length;
+                if (totalSlides > 0) {
+                    const dragPercent = (diff / slidesContainer.offsetWidth) * 100;
+                    // Uncomment for smooth drag effect (optional)
+                    // slidesContainer.style.transform = `translateX(calc(-${currentIndex * 100}% + ${dragPercent}%))`;
+                }
+            }
+
+            function handleTouchEnd(e) {
+                if (!isSwiping) return;
+                isSwiping = false;
+                
+                const diffX = touchEndX - touchStartX;
+                
+                if (Math.abs(diffX) > SWIPE_THRESHOLD) {
+                    if (diffX > 0) {
+                        // Swipe right - go to previous slide
+                        prevSlide();
+                    } else {
+                        // Swipe left - go to next slide
+                        nextSlide();
+                    }
+                }
+                
+                // Restart auto timer
+                startAutoTimer();
+                
+                // Reset touch coordinates
+                touchStartX = 0;
+                touchEndX = 0;
+            }
+
+            // Add swipe hint for mobile users (optional)
+            function addSwipeHint() {
+                if (window.innerWidth < 768 && !document.querySelector('.swipe-hint')) {
+                    const hint = document.createElement('div');
+                    hint.className = 'swipe-hint';
+                    hint.innerHTML = '👆 Swipe left/right to navigate';
+                    document.querySelector('.asc-slideshow-container').appendChild(hint);
+                    
+                    // Remove hint after animation
+                    setTimeout(() => {
+                        if (hint && hint.remove) hint.remove();
+                    }, 3000);
+                }
+            }
+
+            // Preload images
             function preloadImages() {
                 const validSlides = slidesData.filter(slide => slide.bgImage && slide.bgImage.trim() !== '');
                 validSlides.forEach(slide => {
@@ -147,11 +215,19 @@
                 container.insertBefore(badge, container.firstChild);
             }
 
+            // Add touch event listeners
+            if (track) {
+                track.addEventListener('touchstart', handleTouchStart, { passive: false });
+                track.addEventListener('touchmove', handleTouchMove, { passive: false });
+                track.addEventListener('touchend', handleTouchEnd);
+            }
+
             // Initialize
             preloadImages();
             buildSlides();
             updateSlidePosition();
             startAutoTimer();
+            addSwipeHint();
 
             // Handle visibility change
             function handleVisibilityChange() {
@@ -168,9 +244,26 @@
             }
             document.addEventListener('visibilitychange', handleVisibilityChange);
 
+            // Handle window resize (maintain responsive layout)
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    updateSlidePosition();
+                    if (window.innerWidth < 768 && !document.querySelector('.swipe-hint')) {
+                        addSwipeHint();
+                    }
+                }, 150);
+            });
+
             // Cleanup
             window.addEventListener('beforeunload', () => {
                 if (autoInterval) clearInterval(autoInterval);
+                if (track) {
+                    track.removeEventListener('touchstart', handleTouchStart);
+                    track.removeEventListener('touchmove', handleTouchMove);
+                    track.removeEventListener('touchend', handleTouchEnd);
+                }
             });
         }
 
