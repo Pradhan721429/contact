@@ -18,7 +18,7 @@
                     caption: "🏔️ Beautiful Mountain"
                 },
                 {
-                    bgImage: "images/your-image-2.jpg",  // 👈 CHANGE THIS
+                    bgImage: "E-mail (1)-1.png",  // 👈 CHANGE THIS
                     caption: "🌊 Ocean View"
                 },
                 {
