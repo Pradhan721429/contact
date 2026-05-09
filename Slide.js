@@ -14,24 +14,34 @@
             // =============================================
             const slidesData = [
                 {
-                    bgImage: "images/your-image-1.jpg",  // 👈 CHANGE THIS
-                    caption: "🏔️ Beautiful Mountain"
+                    bgImage: "SL1.JPEG",  
                 },
-                {
-                    bgImage: "E-mail (1)-1.png",  // 👈 CHANGE THIS
-                    caption: "🌊 Ocean View"
+                 {
+                    bgImage: "SL2.JPEG",  
                 },
-                {
-                    bgImage: "images/your-image-3.jpg",  // 👈 CHANGE THIS
-                    caption: "🎨 Art & Nature"
+                 {
+                    bgImage: "SL3.JPEG",  
                 },
-                {
-                    bgImage: "images/your-image-4.jpg",  // 👈 CHANGE THIS
-                    caption: "✨ Magical Sunset"
+                 {
+                    bgImage: "SL4.JPEG",  
                 },
-                {
-                    bgImage: "images/your-image-5.jpg",  // 👈 CHANGE THIS
-                    caption: "🌟 Starry Night"
+                 {
+                    bgImage: "SL5.JPEG",  
+                },
+                 {
+                    bgImage: "SL6.JPEG",  
+                },
+                 {
+                    bgImage: "SL7.JPEG",  
+                },
+                 {
+                    bgImage: "SL8.JPEG",  
+                },
+                 {
+                    bgImage: "SL9.JPEG",  
+                },
+                 {
+                    bgImage: "SL10.JPEG",  
                 }
             ];
 
