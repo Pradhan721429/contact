@@ -78,7 +78,11 @@
                     slideDiv.style.backgroundSize = 'cover';
                     slideDiv.style.backgroundPosition = 'center';
                     
-                    
+                    const captionElem = document.createElement('div');
+                    captionElem.className = 'asc-slide-caption';
+                    captionElem.innerText = slide.caption || ``;
+                    slideDiv.appendChild(captionElem);
+                    slidesContainer.appendChild(slideDiv);
                 });
 
                 // Create dots
