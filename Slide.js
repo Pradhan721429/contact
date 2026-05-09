@@ -14,34 +14,34 @@
             // =============================================
             const slidesData = [
                 {
-                    bgImage: "SL1.JPEG",  
+                    bgImage: "SL1.jpeg",  
                 },
                  {
-                    bgImage: "SL2.JPEG",  
+                    bgImage: "SL2.jpeg",  
                 },
                  {
-                    bgImage: "SL3.JPEG",  
+                    bgImage: "SL3.jpeg",  
                 },
                  {
-                    bgImage: "SL4.JPEG",  
+                    bgImage: "SL4.jpeg",  
                 },
                  {
-                    bgImage: "SL5.JPEG",  
+                    bgImage: "SL5.jpeg",  
                 },
                  {
-                    bgImage: "SL6.JPEG",  
+                    bgImage: "SL6.jpeg",  
                 },
                  {
-                    bgImage: "SL7.JPEG",  
+                    bgImage: "SL7.jpeg",  
                 },
                  {
-                    bgImage: "SL8.JPEG",  
+                    bgImage: "SL8.jpeg",  
                 },
                  {
-                    bgImage: "SL9.JPEG",  
+                    bgImage: "SL9.jpeg",  
                 },
                  {
-                    bgImage: "SL10.JPEG",  
+                    bgImage: "SL10.jpeg",  
                 }
             ];
 
@@ -78,11 +78,7 @@
                     slideDiv.style.backgroundSize = 'cover';
                     slideDiv.style.backgroundPosition = 'center';
                     
-                    const captionElem = document.createElement('div');
-                    captionElem.className = 'asc-slide-caption';
-                    captionElem.innerText = slide.caption || `Slide ${idx + 1}`;
-                    slideDiv.appendChild(captionElem);
-                    slidesContainer.appendChild(slideDiv);
+                    
                 });
 
                 // Create dots
