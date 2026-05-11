@@ -221,7 +221,7 @@
             if (container && !container.querySelector('.asc-auto-badge')) {
                 const badge = document.createElement('div');
                 badge.className = 'asc-auto-badge';
-                badge.innerHTML = '<span>⏵</span> AUTO • CYCLE';
+                badge.innerHTML = '<span>⏵</span> AUTO';
                 container.insertBefore(badge, container.firstChild);
             }
 
