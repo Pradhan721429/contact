@@ -12,9 +12,9 @@
     }
 
     /* Responsive width for different screen sizes */
-    @media (min-width: 768px) {
+    @media (min-width: 720px) {
         .auto-slideshow-card {
-            max-width: 620px;
+            max-width: 720px;
             border-radius: 0px;  /* NO rounded corners */
         }
     }
