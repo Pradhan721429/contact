@@ -12,16 +12,16 @@
     }
 
     /* Responsive width for different screen sizes */
-    @media (min-width: 720px) {
+    @media (min-width: 768px) {
         .auto-slideshow-card {
-            max-width: 720px;
+            max-width: 480px;
             border-radius: 0px;  /* NO rounded corners */
         }
     }
 
     @media (min-width: 1200px) {
         .auto-slideshow-card {
-            max-width: 800px;
+            max-width: 720px;
         }
     }
 
