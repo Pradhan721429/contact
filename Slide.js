@@ -83,7 +83,7 @@
                 
                 const captionElem = document.createElement('div');
                 captionElem.className = 'asc-slide-caption';
-                captionElem.innerText = slide.caption || `Slide ${idx + 1}`;
+                captionElem.innerText = slide.caption || ``;
                 slideDiv.appendChild(captionElem);
                 slidesContainer.appendChild(slideDiv);
             });
