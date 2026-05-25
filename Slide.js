@@ -13,7 +13,7 @@
         // 📷 ADD YOUR IMAGES HERE 📷
         // =============================================
         const slidesData = [
-             {
+            {
                     bgImage: "SL1.jpeg",  
                 },
                  {
@@ -58,6 +58,20 @@
         let touchEndX = 0;
         let isSwiping = false;
 
+        // Function to detect if device is mobile
+        function isMobile() {
+            return window.innerWidth < 768;
+        }
+
+        // Function to set appropriate background size based on device
+        function setBackgroundSize(slideDiv) {
+            if (isMobile()) {
+                slideDiv.style.backgroundSize = 'contain';
+            } else {
+                slideDiv.style.backgroundSize = 'cover';
+            }
+        }
+
         function buildSlides() {
             slidesContainer.innerHTML = '';
             dotsContainer.innerHTML = '';
@@ -75,15 +89,16 @@
                 const slideDiv = document.createElement('div');
                 slideDiv.className = 'asc-slide';
                 slideDiv.style.backgroundImage = `url('${slide.bgImage}')`;
-                slideDiv.style.backgroundSize = 'cover';
                 slideDiv.style.backgroundPosition = 'center';
+                slideDiv.style.backgroundRepeat = 'no-repeat';
+                setBackgroundSize(slideDiv);
                 slideDiv.style.width = '100%';
                 slideDiv.style.flex = '0 0 100%';
                 slideDiv.style.minWidth = '0';
                 
                 const captionElem = document.createElement('div');
                 captionElem.className = 'asc-slide-caption';
-                captionElem.innerText = slide.caption || ``;
+                captionElem.innerText = slide.caption || `Slide ${idx + 1}`;
                 slideDiv.appendChild(captionElem);
                 slidesContainer.appendChild(slideDiv);
             });
@@ -181,7 +196,7 @@
         }
 
         function addSwipeHint() {
-            if (window.innerWidth < 768 && !document.querySelector('.swipe-hint')) {
+            if (isMobile() && !document.querySelector('.swipe-hint')) {
                 const container = document.querySelector('.asc-slideshow-container');
                 if (container) {
                     const hint = document.createElement('div');
@@ -202,6 +217,19 @@
                 const img = new Image();
                 img.src = slide.bgImage;
             });
+        }
+
+        // Update background size on resize
+        function handleResize() {
+            const slides = document.querySelectorAll('.asc-slide');
+            slides.forEach(slide => {
+                if (isMobile()) {
+                    slide.style.backgroundSize = 'contain';
+                } else {
+                    slide.style.backgroundSize = 'cover';
+                }
+            });
+            updateSlidePosition();
         }
 
         const container = document.querySelector('.asc-slideshow-container');
@@ -242,7 +270,10 @@
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                updateSlidePosition();
+                handleResize();
+                if (isMobile() && !document.querySelector('.swipe-hint')) {
+                    addSwipeHint();
+                }
             }, 150);
         });
 
