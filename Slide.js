@@ -1,4 +1,4 @@
-(function() {
+        (function() {
     function initAutoSlideshow() {
         const slidesContainer = document.getElementById('ascSlidesContainer');
         const dotsContainer = document.getElementById('ascDotsContainer');
@@ -83,7 +83,7 @@
                 
                 const captionElem = document.createElement('div');
                 captionElem.className = 'asc-slide-caption';
-                captionElem.innerText = slide.caption || ``;
+                captionElem.innerText = slide.caption || `Slide ${idx + 1}`;
                 slideDiv.appendChild(captionElem);
                 slidesContainer.appendChild(slideDiv);
             });
