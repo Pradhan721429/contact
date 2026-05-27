@@ -75,7 +75,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    background-size: cover;
+    background-size: contain;  /* CHANGE: from 'cover' to 'contain' to show full image */
     background-position: center center;
     background-repeat: no-repeat;
     display: flex;
@@ -83,46 +83,58 @@
     justify-content: flex-start;
 }
 
-/* Smaller aspect ratio for mobile */
-@media (max-width: 767px) {
+/* Different aspect ratios for different screen sizes */
+@media (max-width: 480px) {
     .asc-slide {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 3 / 4;  /* Portrait orientation for very small screens */
+        background-size: contain;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .asc-slide {
+        aspect-ratio: 3 / 2;  /* Standard ratio for mobile */
+        background-size: contain;
     }
 }
 
 @media (min-width: 768px) {
     .asc-slide {
         aspect-ratio: 16 / 9;
+        background-size: cover;  /* Keep cover for desktop where cropping is fine */
     }
 }
 
+/* Alternative: Use background-size based on image orientation */
+/* Remove the gradient overlay that might affect visibility */
 .asc-slide::before {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), transparent);
+    height: 30%;  /* Reduced from 50% */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0), transparent);
     pointer-events: none;
     z-index: 1;
 }
 
-/* Smaller caption text for mobile - NO rounded corners */
+/* Caption styling - adjusted for better visibility on contain images */
 .asc-slide-caption {
     position: relative;
     z-index: 2;
-    color: rgb(43, 40, 14);
+    color: white;  /* Changed for better contrast */
     padding: 0.6rem 0.8rem;
     font-weight: 600;
     font-size: 0.8rem;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);  /* Added shadow for readability */
     max-width: 90%;
-    background: rgba(156, 139, 139, 0);
+    background: rgba(0, 0, 0, 0.5);  /* Added semi-transparent background */
     border-radius: 0px;
     margin: 0 0 8px 8px;
-    border-left: 3px solid #ffab4400;
+    border-left: 3px solid #ffaa44;
     word-break: break-word;
+    backdrop-filter: blur(4px);
 }
 
 @media (min-width: 480px) {
@@ -140,10 +152,11 @@
         font-size: 1.2rem;
         margin: 0 0 14px 14px;
         border-left-width: 4px;
+        background: rgba(0, 0, 0, 0.4);
     }
 }
 
-/* Smaller dots container for mobile - NO rounded corners */
+/* Dots container */
 .asc-dots-container {
     display: flex;
     justify-content: center;
@@ -170,7 +183,7 @@
     }
 }
 
-/* Smaller dots for mobile */
+/* Dots styling */
 .asc-dot {
     width: 5px;
     height: 5px;
@@ -216,7 +229,7 @@
     transform: scale(1.2);
 }
 
-/* Smaller auto badge for mobile - NO rounded corners */
+/* Auto badge */
 .asc-auto-badge {
     position: absolute;
     top: 6px;
@@ -246,7 +259,7 @@
     }
 }
 
-/* Swipe hint for mobile */
+/* Swipe hint */
 .swipe-hint {
     position: absolute;
     bottom: 70px;
