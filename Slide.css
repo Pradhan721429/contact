@@ -86,7 +86,7 @@
 /* Smaller aspect ratio for mobile */
 @media (max-width: 767px) {
     .asc-slide {
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 5 / 4;
     }
 }
 
