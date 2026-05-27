@@ -75,7 +75,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
     display: flex;
@@ -86,7 +86,7 @@
 /* Smaller aspect ratio for mobile */
 @media (max-width: 767px) {
     .asc-slide {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 9;
     }
 }
 
