@@ -86,7 +86,7 @@
 /* Different aspect ratios for different screen sizes */
 @media (max-width: 480px) {
     .asc-slide {
-        aspect-ratio: 3 / 4;  /* Portrait orientation for very small screens */
+        aspect-ratio: 3 / 2;  /* Portrait orientation for very small screens */
         background-size: contain;
     }
 }
