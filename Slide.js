@@ -36,12 +36,6 @@
                 },
                  {
                     bgImage: "SL8.jpeg",  
-                },
-                 {
-                    bgImage: "SL9.jpeg",  
-                },
-                 {
-                    bgImage: "SL10.jpeg",  
                 }
         ];
 
