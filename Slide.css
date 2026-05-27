@@ -83,17 +83,11 @@
     justify-content: flex-start;
 }
 
-/* Different aspect ratios for different screen sizes */
-@media (max-width: 480px) {
-    .asc-slide {
-        aspect-ratio: 3 / 2;  /* Portrait orientation for very small screens */
-        background-size: contain;
-    }
-}
 
-@media (min-width: 481px) and (max-width: 767px) {
+
+@media (max-width: 767px) {
     .asc-slide {
-        aspect-ratio: 3 / 2;  /* Standard ratio for mobile */
+        aspect-ratio: 2 / 3;  /* Standard ratio for mobile */
         background-size: contain;
     }
 }
