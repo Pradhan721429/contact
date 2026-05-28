@@ -77,7 +77,7 @@
                 
                 const captionElem = document.createElement('div');
                 captionElem.className = 'asc-slide-caption';
-                captionElem.innerText = slide.caption || `Slide ${idx + 1}`;
+                captionElem.innerText = slide.caption || ``;
                 slideDiv.appendChild(captionElem);
                 slidesContainer.appendChild(slideDiv);
             });
@@ -202,7 +202,7 @@
         if (container && !container.querySelector('.asc-auto-badge')) {
             const badge = document.createElement('div');
             badge.className = 'asc-auto-badge';
-            badge.innerHTML = '<span>⏵</span> AUTO';
+            badge.innerHTML = '';
             container.insertBefore(badge, container.firstChild);
         }
 
