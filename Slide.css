@@ -113,42 +113,7 @@
     z-index: 1;
 }
 
-/* Caption styling - adjusted for better visibility on contain images */
-.asc-slide-caption {
-    position: relative;
-    z-index: 2;
-    color: white;  /* Changed for better contrast */
-    padding: 0.6rem 0.8rem;
-    font-weight: 600;
-    font-size: 0.8rem;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0);  /* Added shadow for readability */
-    max-width: 90%;
-    background: rgba(0, 0, 0, 0);  /* Added semi-transparent background */
-    border-radius: 0px;
-    margin: 0 0 8px 8px;
-    border-left: 3px solid #ffaa4400;
-    word-break: break-word;
-    backdrop-filter: blur(4px);
-}
 
-@media (min-width: 480px) {
-    .asc-slide-caption {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-        margin: 0 0 10px 10px;
-        border-left-width: 3px;
-    }
-}
-
-@media (min-width: 768px) {
-    .asc-slide-caption {
-        padding: 1.2rem 1.5rem;
-        font-size: 1.2rem;
-        margin: 0 0 14px 14px;
-        border-left-width: 4px;
-        background: rgba(0, 0, 0, 0.4);
-    }
-}
 
 /* Dots container */
 .asc-dots-container {
