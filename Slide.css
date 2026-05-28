@@ -87,7 +87,7 @@
 
 @media (max-width: 767px) {
     .asc-slide {
-        aspect-ratio: 3 / 2;  /* Standard ratio for mobile */
+        aspect-ratio: 7 / 4;  /* Standard ratio for mobile */
         background-size: contain;
     }
 }
