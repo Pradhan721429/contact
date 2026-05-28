@@ -121,12 +121,12 @@
     padding: 0.6rem 0.8rem;
     font-weight: 600;
     font-size: 0.8rem;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);  /* Added shadow for readability */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0);  /* Added shadow for readability */
     max-width: 90%;
-    background: rgba(0, 0, 0, 0.5);  /* Added semi-transparent background */
+    background: rgba(0, 0, 0, 0);  /* Added semi-transparent background */
     border-radius: 0px;
     margin: 0 0 8px 8px;
-    border-left: 3px solid #ffaa44;
+    border-left: 3px solid #ffaa4400;
     word-break: break-word;
     backdrop-filter: blur(4px);
 }
